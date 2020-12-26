@@ -256,7 +256,7 @@ def exists(userid):
     
 def exists_index(index):
     try:
-        userid_from_index(index)
+        Player(index)
     except ValueError:
         return False
     return True
