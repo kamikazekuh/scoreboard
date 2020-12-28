@@ -417,13 +417,16 @@ def on_client_active(index):
 # =============================================================================
 @Event('player_disconnect')	
 def player_disconnect(ev):
-	userid = ev.get_int('userid')
-	player_entity = Player(index_from_userid(userid))
+    userid = ev.get_int('userid')
+    if exists(userid):
+        player_entity = Player(index_from_userid(userid))
+    else:
+        return
 	
-	statsplayers[ev['userid']].save()
-	if userid in statsplayers:
-		statsplayers[ev['userid']].name = statsplayers[ev['userid']].remove_warnings(player_entity.name)
-		statsplayers[ev['userid']].save()
+    statsplayers[ev['userid']].save()
+    if userid in statsplayers:
+        statsplayers[ev['userid']].name = statsplayers[ev['userid']].remove_warnings(player_entity.name)
+        statsplayers[ev['userid']].save()
         
 @Event('player_hurt')
 def player_hurt(ev):
