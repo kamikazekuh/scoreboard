@@ -196,7 +196,7 @@ def show_stats_repeat():
                 fx_time=1.0,
                 channel=1,
             ).send(player.index)
-            time_message = time.strftime('%a, %m.%y. %H:%M:%S',time.localtime(time.time()))
+            time_message = time.strftime('%a, %d.%m.%y. %H:%M:%S',time.localtime(time.time()))
             HudMsg(
                 message=time_message,
                 x=-1,
